@@ -284,9 +284,19 @@ selected.classList.add('bg-black','text-white')
 console.log(id);
 
 if(id=='interJobCount'){
+    if(interviewList.length<=0){
+   interView.innerHTML=`
+       <div class="bg-white shadow rounded-md text-center">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <h1>No Jobs Available</h1>
+    <p>Check back soon for new job opportunities</p>
+</div>
+        `
+}
 getJobSection.classList.add('hidden')
 rejectedView.classList.add('hidden')
 interView.classList.remove('hidden')
+
 }
 else if(id=='allJobCount'){
    getJobSection.classList.remove('hidden')
@@ -294,9 +304,19 @@ interView.classList.add('hidden')
 rejectedView.classList.add('hidden') 
 }
 else if(id=='rejeJobCount'){
+    if(rejectedList.length<=0){
+      rejectedView.innerHTML=`
+       <div class="bg-white shadow rounded-md text-center">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <h1>No Jobs Available</h1>
+    <p>Check back soon for new job opportunities</p>
+</div>
+        `
+}
    getJobSection.classList.add('hidden')
 interView.classList.add('hidden') 
 rejectedView.classList.remove('hidden') 
+
 }
 
   
@@ -315,7 +335,7 @@ const reject=parentNode.querySelector('.reject').innerText;
 
 
 const status=parentNode.querySelector('.statu')
-status.innerText='interView'
+status.innerText='INTERVIEW'
 status.classList.add('btn','btn-accent','btn-outline')
 const jobInfo={
     comName,
@@ -333,9 +353,7 @@ const addAndGetComName=interviewList.find(job=>job.comName==jobInfo.comName)
 
 if(!addAndGetComName){
     interviewList.push(jobInfo)
-    console.log('rist',interviewList);  
-} 
-
+}
 
   calculateCount();
  createInterviewSection();
@@ -353,8 +371,8 @@ const reject=parentNode.querySelector('.reject').innerText;
 
 
 const status=parentNode.querySelector('.statu')
-status.innerText='Rejected'
-status.classList.add('btn','btn-accent','btn-outline')
+status.innerText='REJECTED'
+status.classList.add('btn','btn-error')
 const jobInfo={
     comName,
     regName,
@@ -370,7 +388,7 @@ const addAndGetComName=rejectedList.find(job=>job.comName==jobInfo.comName)
 
 if(!addAndGetComName){
     rejectedList.push(jobInfo)
-    console.log(rejectedList);  
+  
 } 
 
 
@@ -379,7 +397,7 @@ if(!addAndGetComName){
 createRejectSection(); 
     }
     else if(event.target.classList.contains('deleteBtn')){
-        const deleteBtn=event.target.parentNode;
+        const deleteBtn=event.target.closest('.flex');
         const deleteElement=deleteBtn.querySelector('.comName').innerText;
        interviewList=interviewList.filter(item=>item.comName!==deleteElement)
        rejectedList=rejectedList.filter(item=>item.comName!==deleteElement)
@@ -390,7 +408,19 @@ createRejectSection();
 
 // interview function
 function createInterviewSection(){
-    interView.innerHTML=``;
+
+//      if(interviewList.length<=0){
+          
+//         interView.innerHTML=`
+//        <div class="bg-white shadow rounded-md text-center">
+//     <img class="mx-auto" src="./jobs.png" alt="">
+//     <h1>No Jobs Available</h1>
+//     <p>Check back soon for new job opportunities</p>
+// </div>
+//         `
+//         return;
+//      }
+  interView.innerHTML=``;
     for(const inters of interviewList){
        const div=document.createElement('div')
       
@@ -403,7 +433,7 @@ function createInterviewSection(){
             </div>
             <p class="text-[#64748B] jobCatName">${inters.jobCatName}</p>
             <div>
-                <p class="text-[#002C5C] font-medium statu">${inters.statu}</p>
+                <p class="text-[#002C5C] btn btn-accent font-medium statu">${inters.statu}</p>
                 <p class="text-[#323B49] discription">${inters.discription}</p>
             </div>
             <div>
@@ -419,7 +449,18 @@ function createInterviewSection(){
     
 }
 function createRejectSection(){
-    rejectedView.innerHTML=``;
+        rejectedView.innerHTML=``;
+//       if(rejectedList.length<=0){
+//         rejectedView.innerHTML=`
+//         <div class="bg-white shadow rounded-md text-center">
+//     <img class="mx-auto" src="./jobs.png" alt="">
+//     <h1>No Jobs Available</h1>
+//     <p>Check back soon for new job opportunities</p>
+// </div>
+//         `
+//         return;
+//      }
+
     for(const rejects of rejectedList){
        const div=document.createElement('div')
       
@@ -432,7 +473,7 @@ function createRejectSection(){
             </div>
             <p class="text-[#64748B] jobCatName">${rejects.jobCatName}</p>
             <div>
-                <p class="text-[#002C5C] font-medium statu">${rejects.statu}</p>
+                <p class="text-[#002C5C] btn btn-error font-medium statu">${rejects.statu}</p>
                 <p class="text-[#323B49] discription">${rejects.discription}</p>
             </div>
             <div>
