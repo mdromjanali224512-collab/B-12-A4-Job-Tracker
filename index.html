@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4-PH-JOB-TRACKER</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <!-- font awesome -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+         <!-- google font -->
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    .geist {
+  font-family: "Geist", sans-serif;
+}
+</style>
+</head>
+<body class="geist w-[80%] mx-auto bg-[#F8FAFC]">
+   <header>
+    <h1 class="text-[#002C5C] text-3xl font-bold pt-15 mb-4">Job Application Tracker</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-white rounded-sm shadow p-5">
+            <p class="text-[#323B49] font-medium">Total</p>
+            <p class="text-2xl text-[#002C5C]" id="totalCount">0</p>
+        </div>
+        <div class="bg-white rounded-sm shadow p-5">
+            <p class="text-[#323B49] font-medium">Interview</p>
+            <p id="interviewCount" class="text-2xl text-[#10B981]">0</p>
+        </div>
+        <div class="bg-white rounded-sm shadow p-5">
+            <p class="text-[#323B49] font-medium">Rejected</p>
+            <p id="rejectedCount" class="text-2xl text-[#EF4444]">0</p>
+        </div>
+    </div>
+   </header>
+   <hr class="my-7 text-[#E6E7E9]">
+   
+   <main id="mainContainer">
+    <h1 class="text-[#002C5C] mb-8 font-semibold text-xl">Available Jobs</h1>
+    <div class="mb-5">
+        <button onclick="btnToggle('allJobCount')" id="allJobCount" class="bg-black px-4 py-2 rounded-md text-white">All</button>
+        <button onclick="btnToggle('interJobCount')" id="interJobCount" class="bg-gray-400 rounded-md px-4 py-2">Interview</button>
+        <button onclick="btnToggle('rejeJobCount')" id="rejeJobCount" class="bg-gray-400 rounded-md px-4 py-2">Rejected</button>
+    </div>
+
+    <!-- interview section -->
+     <section id="interView" class="hidden space-y-5">
+
+     </section>
+    <!-- interview section -->
+     <section id="rejectedView" class="hidden space-y-5">
+
+     </section>
+     
+    <!-- job section -->
+     <section id="jobSection" class="space-y-5">
+        <!-- job-1 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">Mobile First Corp</h1>
+             <p class="text-[#64748B] regName">React Native Developer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Remote • Full-time • $130,000 - $175,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-2 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">WebFlow Agency</h1>
+             <p class="text-[#64748B] regName">Web Designer & Developer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Los Angeles, CA
+ • 
+Part-time 
+•
+ $80,000 - $120,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-3 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">DataViz Solutions</h1>
+             <p class="text-[#64748B] regName">Data Visualization Specialist</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Boston, MA 
+•
+ Full-time
+ •
+ $125,000 - $165,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.
+</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-4 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">CloudFirst Inc</h1>
+             <p class="text-[#64748B] regName">Backend Developer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Seattle, WA
+ •
+ Full-time
+ •
+ $140,000 - $190,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-5 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">Innovation Labs</h1>
+             <p class="text-[#64748B] regName">UI/UX Engineer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Austin, TX
+ •
+ Full-time
+ •
+ $110,000 - $150,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-6 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">MegaCorp Solutions</h1>
+             <p class="text-[#64748B] regName">JavaScript Developer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">New York, NY
+ • 
+Full-time 
+•
+ $130,000 - $170,00</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-7 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">StartupXYZ</h1>
+             <p class="text-[#64748B] regName">Full Stack Engineer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">Remote
+ • 
+Full-time 
+•
+ $120,000 - $160,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
+            </div>
+            <div>
+                <button id="addInterview" class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+        <!-- job-8 -->
+        <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">TechCorp Industries</h1>
+             <p class="text-[#64748B] regName">Senior Frontend Developer</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">San Francisco, CA
+ • 
+Full-time 
+•
+ $130,000 - $175,000</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">NOT APPLIED</p>
+                <p class="text-[#323B49] discription">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+          
+     </section>
+   </main>
+
+<script>
+    let interviewList=[];
+    let rejectedList=[];
+    let getJobSection=document.getElementById('jobSection')
+
+    let totalJob=document.getElementById('totalCount')
+    let interviewCount=document.getElementById('interviewCount');
+    let rejectedCount=document.getElementById('rejectedCount');
+
+    // btn get
+    const allJobBtn=document.getElementById('allJobCount');
+    const interJobBtn=document.getElementById('interJobCount');
+    const rejeJobBtn=document.getElementById('rejeJobCount');
+// main
+const mainContainer=document.getElementById('mainContainer')
+const interView=document.getElementById("interView")
+const rejectedView=document.getElementById('rejectedView')
+
+  function calculateCount(){
+        const joblength=getJobSection.children.length;
+    totalJob.innerText=joblength
+interviewCount.innerText=interviewList.length;
+rejectedCount.innerText=rejectedList.length;
+
+  }
+  calculateCount()
+
+function btnToggle(id){
+    allJobBtn.classList.remove('bg-black','text-white')
+    interJobBtn.classList.remove('bg-gray-400','text-white')
+    rejeJobBtn.classList.remove('bg-gray-400','text-white')
+    // add
+    allJobBtn.classList.add('bg-gray-400')
+    interJobBtn.classList.add('bg-gray-400')
+    rejeJobBtn.classList.add('bg-gray-400')
+
+const selected=document.getElementById(id)
+selected.classList.remove('bg-gray-400','text-white')
+selected.classList.add('bg-black','text-white')
+console.log(id);
+
+if(id=='interJobCount'){
+getJobSection.classList.add('hidden')
+rejectedView.classList.add('hidden')
+interView.classList.remove('hidden')
+}
+else if(id=='allJobCount'){
+   getJobSection.classList.remove('hidden')
+interView.classList.add('hidden') 
+rejectedView.classList.add('hidden') 
+}
+else if(id=='rejeJobCount'){
+   getJobSection.classList.add('hidden')
+interView.classList.add('hidden') 
+rejectedView.classList.remove('hidden') 
+}
+
+  
+}
+mainContainer.addEventListener('click',function(event){
+
+    if(event.target.classList.contains('inter')){
+        const parentNode=event.target.parentNode.parentNode;
+const comName=parentNode.querySelector('.comName').innerText;
+const regName=parentNode.querySelector('.regName').innerText;
+const jobCatName=parentNode.querySelector('.jobCatName').innerText;
+const statu=parentNode.querySelector('.statu').innerText;
+const discription=parentNode.querySelector('.discription').innerText;
+const inter=parentNode.querySelector('.inter').innerText;
+const reject=parentNode.querySelector('.reject').innerText;
+
+
+const status=parentNode.querySelector('.statu')
+status.innerText='interView'
+status.classList.add('btn','btn-accent','btn-outline')
+const jobInfo={
+    comName,
+    regName,
+    jobCatName,
+    statu:status.innerText,
+    discription,
+    inter,
+    reject
+}
+rejectedList=rejectedList.filter(item=>item.comName!=jobInfo.comName)
+
+const addAndGetComName=interviewList.find(job=>job.comName==jobInfo.comName)
+
+
+if(!addAndGetComName){
+    interviewList.push(jobInfo)
+    console.log('rist',interviewList);  
+} 
+
+
+  calculateCount();
+ createInterviewSection();
+createRejectSection();
+    }
+   else if(event.target.classList.contains('reject')){
+        const parentNode=event.target.parentNode.parentNode;
+const comName=parentNode.querySelector('.comName').innerText;
+const regName=parentNode.querySelector('.regName').innerText;
+const jobCatName=parentNode.querySelector('.jobCatName').innerText;
+const statu=parentNode.querySelector('.statu').innerText;
+const discription=parentNode.querySelector('.discription').innerText;
+const inter=parentNode.querySelector('.inter').innerText;
+const reject=parentNode.querySelector('.reject').innerText;
+
+
+const status=parentNode.querySelector('.statu')
+status.innerText='Rejected'
+status.classList.add('btn','btn-accent','btn-outline')
+const jobInfo={
+    comName,
+    regName,
+    jobCatName,
+    statu:status.innerText,
+    discription,
+    inter,
+    reject
+}
+interviewList=interviewList.filter(item=>item.comName!=jobInfo.comName)
+const addAndGetComName=rejectedList.find(job=>job.comName==jobInfo.comName)
+
+
+if(!addAndGetComName){
+    rejectedList.push(jobInfo)
+    console.log(rejectedList);  
+} 
+
+
+ calculateCount();
+ createInterviewSection();
+createRejectSection(); 
+    }
+    else if(event.target.classList.contains('deleteBtn')){
+        const deleteBtn=event.target.parentNode;
+        const deleteElement=deleteBtn.querySelector('.comName').innerText;
+       interviewList=interviewList.filter(item=>item.comName!==deleteElement)
+       rejectedList=rejectedList.filter(item=>item.comName!==deleteElement)
+       deleteBtn.remove();
+       calculateCount();
+    }
+})
+
+// interview function
+function createInterviewSection(){
+    interView.innerHTML=``;
+    for(const inters of interviewList){
+       const div=document.createElement('div')
+      
+    div.innerHTML=`
+      <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">${inters.comName}</h1>
+             <p class="text-[#64748B] regName">${inters.regName}</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">${inters.jobCatName}</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">${inters.statu}</p>
+                <p class="text-[#323B49] discription">${inters.discription}</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+    `
+    interView.append(div)
+    }
+    
+}
+function createRejectSection(){
+    rejectedView.innerHTML=``;
+    for(const rejects of rejectedList){
+       const div=document.createElement('div')
+      
+    div.innerHTML=`
+      <div class="flex justify-between bg-white shadow p-8 rounded-xl">
+            <div class=" space-y-5">
+            <div>
+                 <h1 class="text-[#002C5C] font-semibold text-xl comName">${rejects.comName}</h1>
+             <p class="text-[#64748B] regName">${rejects.regName}</p>
+            </div>
+            <p class="text-[#64748B] jobCatName">${rejects.jobCatName}</p>
+            <div>
+                <p class="text-[#002C5C] font-medium statu">${rejects.statu}</p>
+                <p class="text-[#323B49] discription">${rejects.discription}</p>
+            </div>
+            <div>
+                <button class="btn btn-accent btn-outline font-bold inter">INTERVIEW</button>
+                <button class="btn btn-error btn-outline font-bold reject">REJECTED</button>
+            </div>
+        </div>
+<i class="fa-solid fa-trash-can deleteBtn"></i>
+        </div>
+    `
+    rejectedView.append(div)
+    }
+    
+}
+
+   
+</script>
+</body>
+</html>
