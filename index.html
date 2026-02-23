@@ -45,6 +45,8 @@
         <button onclick="btnToggle('interJobCount')" id="interJobCount" class="bg-gray-400 rounded-md px-4 py-2">Interview</button>
         <button onclick="btnToggle('rejeJobCount')" id="rejeJobCount" class="bg-gray-400 rounded-md px-4 py-2">Rejected</button>
     </div>
+            <p class="text-2xl text-[#002C5C]" id="totalCount">0</p>
+            <p id="interviewCount" class="text-2xl text-[#10B981]">0</p>
 
     <!-- interview section -->
      <section id="interView" class="hidden space-y-5">
@@ -286,7 +288,7 @@ console.log(id);
 if(id=='interJobCount'){
     if(interviewList.length<=0){
    interView.innerHTML=`
-       <div class="bg-white shadow rounded-md text-center">
+       <div class="bg-white shadow rounded-md text-center p-10">
     <img class="mx-auto" src="./jobs.png" alt="">
     <h1>No Jobs Available</h1>
     <p>Check back soon for new job opportunities</p>
@@ -306,7 +308,7 @@ rejectedView.classList.add('hidden')
 else if(id=='rejeJobCount'){
     if(rejectedList.length<=0){
       rejectedView.innerHTML=`
-       <div class="bg-white shadow rounded-md text-center">
+       <div class="bg-white shadow rounded-md text-center p-10">
     <img class="mx-auto" src="./jobs.png" alt="">
     <h1>No Jobs Available</h1>
     <p>Check back soon for new job opportunities</p>
@@ -317,9 +319,7 @@ else if(id=='rejeJobCount'){
 interView.classList.add('hidden') 
 rejectedView.classList.remove('hidden') 
 
-}
-
-  
+} 
 }
 mainContainer.addEventListener('click',function(event){
 
@@ -347,9 +347,7 @@ const jobInfo={
     reject
 }
 rejectedList=rejectedList.filter(item=>item.comName!=jobInfo.comName)
-
 const addAndGetComName=interviewList.find(job=>job.comName==jobInfo.comName)
-
 
 if(!addAndGetComName){
     interviewList.push(jobInfo)
@@ -403,23 +401,25 @@ createRejectSection();
        rejectedList=rejectedList.filter(item=>item.comName!==deleteElement)
        deleteBtn.remove();
        calculateCount();
+        createInterviewSection();
+createRejectSection(); 
     }
 })
 
 // interview function
 function createInterviewSection(){
 
-//      if(interviewList.length<=0){
+     if(interviewList.length<=0){
           
-//         interView.innerHTML=`
-//        <div class="bg-white shadow rounded-md text-center">
-//     <img class="mx-auto" src="./jobs.png" alt="">
-//     <h1>No Jobs Available</h1>
-//     <p>Check back soon for new job opportunities</p>
-// </div>
-//         `
-//         return;
-//      }
+        interView.innerHTML=`
+       <div class="bg-white shadow rounded-md text-center">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <h1>No Jobs Available</h1>
+    <p>Check back soon for new job opportunities</p>
+</div>
+        `
+        return;
+     }
   interView.innerHTML=``;
     for(const inters of interviewList){
        const div=document.createElement('div')
@@ -450,16 +450,16 @@ function createInterviewSection(){
 }
 function createRejectSection(){
         rejectedView.innerHTML=``;
-//       if(rejectedList.length<=0){
-//         rejectedView.innerHTML=`
-//         <div class="bg-white shadow rounded-md text-center">
-//     <img class="mx-auto" src="./jobs.png" alt="">
-//     <h1>No Jobs Available</h1>
-//     <p>Check back soon for new job opportunities</p>
-// </div>
-//         `
-//         return;
-//      }
+      if(rejectedList.length<=0){
+        rejectedView.innerHTML=`
+        <div class="bg-white shadow rounded-md text-center">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <h1>No Jobs Available</h1>
+    <p>Check back soon for new job opportunities</p>
+</div>
+        `
+        return;
+     }
 
     for(const rejects of rejectedList){
        const div=document.createElement('div')
