@@ -47,7 +47,7 @@
     </div>
        
 <div class="flex justify-end">
-    <p><span id="sideTotalJob">0</span> jobs</p>
+    <p id="interAndRejectCount"><span id="sideTotalJob"></span> jobs</p>
 </div>
     <!-- interview section -->
      <section id="interView" class="hidden space-y-5">
@@ -292,9 +292,12 @@ function btnToggle(id){
 const selected=document.getElementById(id)
 selected.classList.remove('bg-gray-400','text-white')
 selected.classList.add('bg-black','text-white')
-console.log(id);
+
 
 if(id=='interJobCount'){
+       
+    sideTotalJob.innerText = `${interviewCount.innerText=interviewList.length} of ${sideTotalJob.innerText=getJobSection.children.length}`;
+
     if(interviewList.length<=0){
    interView.innerHTML=`
        <div class="bg-white shadow rounded-md text-center p-10">
@@ -304,17 +307,21 @@ if(id=='interJobCount'){
 </div>
         `
 }
+
 getJobSection.classList.add('hidden')
 rejectedView.classList.add('hidden')
 interView.classList.remove('hidden')
 
 }
 else if(id=='allJobCount'){
+    sideTotalJob.innerText=`${getJobSection.children.length}`
    getJobSection.classList.remove('hidden')
 interView.classList.add('hidden') 
 rejectedView.classList.add('hidden') 
 }
 else if(id=='rejeJobCount'){
+        sideTotalJob.innerText = `${rejectedCount.innerText=rejectedList.length} of ${sideTotalJob.innerText=getJobSection.children.length}`;
+
     if(rejectedList.length<=0){
       rejectedView.innerHTML=`
        <div class="bg-white shadow rounded-md text-center p-10">
@@ -410,8 +417,8 @@ createRejectSection();
        rejectedList=rejectedList.filter(item=>item.comName!==deleteElement)
        deleteBtn.remove();
        calculateCount();
-        createInterviewSection();
-createRejectSection(); 
+ createInterviewSection();
+createRejectSection();
     }
 })
 
